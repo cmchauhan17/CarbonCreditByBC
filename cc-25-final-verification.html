@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verfication</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+  <h1 class="w3-xxxlarge w3-text-theme">Side Navigation</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <a href="#" class="w3-bar-item w3-button">Dashboard</a>
+  <a href="#" class="w3-bar-item w3-button">Add Carbon Data</a>
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
+  <div class="w3-center">
+  <h1>VERIFY THE DETAILS WITH SMART CONTRACT ADDRESS</h1>
+  <br>
+  <p>Enter Address:</p> <input type="text" id="enter_address">
+  </div>
+</header>
+
+<hr>
+
+<div class="w3-row-padding">
+
+<div class="w3-half">
+<div class="w3-card white">
+  <div class="w3-container w3-indigo w3-center">
+    <h3>Sourcing/Procurement</h3>
+  </div>
+    <div class="w3-container w3-center w3-padding-24">
+        <button id="submit1">Organization Name</button>
+        <p id="orgname1">_______</p>
+    </div>
+    <hr>
+    <div class="w3-container w3-center w3-padding-24">
+        <button id="submit2">Transportation Mode</button>
+        <p id="transmode1">_______</p>
+    </div>
+    <hr>
+    <div class="w3-container w3-center w3-padding-24">
+        <button id="submit3">Distance Covered</button>
+        <p id="distancecovered1">_______</p>
+    </div>
+    <hr>
+    <div class="w3-container w3-center w3-padding-24">
+        <button id="submit4">Vehicle Weight</button>
+        <p id="vehicleweight1">_______</p>
+    </div>
+    <hr>
+    <div class="w3-container w3-center w3-padding-24">
+        <button id="submit5">No. of Vehicles</button>
+        <p id="noofvehicles1">_______</p>
+    </div>
+    <div class="w3-container w3-center w3-padding-24">
+        <button id="submit6">Cargo Weight</button>
+        <p id="cargoweight1">_______</p>
+    </div>
+  </div>
+</div>
+<!-- 
+<div class="w3-half">
+    <div class="w3-card white">
+      <div class="w3-container w3-indigo w3-center">
+        <h3>Sourcing/Procurement</h3>
+      </div>
+        <div class="w3-container w3-center w3-padding-24">
+            <button id="submit1">Organization Name</button>
+            <p id="orgname1">_______</p>
+        </div>
+        <hr>
+        <div class="w3-container w3-center w3-padding-24">
+            <button id="submit1">Transportation Mode</button>
+            <p id="transmode1">_______</p>
+        </div>
+        <hr>
+        <div class="w3-container w3-center w3-padding-24">
+            <button id="submit1">Distance Covered</button>
+            <p id="distancecovered1">_______</p>
+        </div>
+        <hr>
+        <div class="w3-container w3-center w3-padding-24">
+            <button id="submit1">Vehicle Weight</button>
+            <p id="vehicleweight1">_______</p>
+        </div>
+        <hr>
+        <div class="w3-container w3-center w3-padding-24">
+            <button id="submit1">No. of Vehicles</button>
+            <p id="noofvehicles1">_______</p>
+        </div>
+        <div class="w3-container w3-center w3-padding-24">
+            <button id="submit1">Cargo Weight</button>
+            <p id="cargoweight1">_______</p>
+        </div>
+      </div>
+    </div> -->
+</div>
+<br>
+<br>
+
+<!-- Footer -->
+<footer class="w3-container w3-theme-dark w3-padding-16">
+  <h3>Footer</h3>
+</footer>
+
+<!-- Script to output all values for verification from blockchain-->
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin=""anonymous"></script>
+
+
+<script>
+
+$(document).ready(function(){
+
+	WEB3 = new Web3(web3.currentProvider);
+
+	var address = document.getElementById("enter_address").value;
+
+	var abi = [
+{
+	"constant": true,
+	"inputs": [],
+	"name": "enterQuantityPurchasedInGases",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "purchasedQuantityOfCredit1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "enterTotalDistanceCovered",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": false,
+	"inputs": [
+		{
+			"name": "_typeOfTravel",
+			"type": "string"
+		},
+		{
+			"name": "_modeOfTransportInComumute",
+			"type": "string"
+		},
+		{
+			"name": "_totalDistanceTravelled",
+			"type": "uint32"
+		}
+	],
+	"name": "input_EmployeeComm",
+	"outputs": [],
+	"payable": false,
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "cargoWeight",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfGasPurchased1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfEnergy",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "enterTotalDistanceCovered1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "weightOfVehiclesInProduct",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "enterQuantityPurchasedInGases1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "CCValue_ProductTrans",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "modeOfTransportInComumute",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "cargoWeight1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "modeOfTransportInProduct1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfTravel1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": false,
+	"inputs": [
+		{
+			"name": "_organisationName",
+			"type": "string"
+		},
+		{
+			"name": "_distanceCovered",
+			"type": "uint32"
+		},
+		{
+			"name": "_transportationMode",
+			"type": "string"
+		},
+		{
+			"name": "_vehicleWeight",
+			"type": "uint32"
+		},
+		{
+			"name": "_numberOfVehicles",
+			"type": "uint32"
+		},
+		{
+			"name": "_cargoWeight",
+			"type": "uint32"
+		}
+	],
+	"name": "input_SourceProcure",
+	"outputs": [],
+	"payable": false,
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "numberOfVehicles",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "unitsOfElectricity1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "distanceCovered1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "modeOfTransportInComumute1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "CCValue_PurchasedCC",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfPowerUsed",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "purchasedQuantityOfCredit",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "CCValue_Elect",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "noOfVehiclesInProduct",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfEnergy1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfTravel",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "totalDistanceTravelled1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "weightOfCargoInProduct1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": false,
+	"inputs": [
+		{
+			"name": "_unitsOfElectricity",
+			"type": "uint32"
+		},
+		{
+			"name": "_typeOfEnergy",
+			"type": "string"
+		}
+	],
+	"name": "input_Elect",
+	"outputs": [],
+	"payable": false,
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "orgName1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "CCValue_PurchasedGas",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "weightOfCargoInProduct",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "distanceCovered",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "unitsOfElectricity",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "totalDistanceTravelled",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "modeOfTransportInProduct",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "transportationMode1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "transportationMode",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "vehicleWeight1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "noOfVehiclesInProduct1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfGasPurchased",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "CCValue_SP",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "typeOfPowerUsed1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "CCValue_EmployeeCommu",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "numberOfVehicles1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": false,
+	"inputs": [
+		{
+			"name": "_typeOfPowerUsed",
+			"type": "string"
+		},
+		{
+			"name": "_purchasedQuantityOfCredit",
+			"type": "uint32"
+		}
+	],
+	"name": "input_GreenPowerOffset",
+	"outputs": [],
+	"payable": false,
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "weightOfVehiclesInProduct1",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": false,
+	"inputs": [
+		{
+			"name": "_enterTotalDistanceCovered",
+			"type": "uint32"
+		},
+		{
+			"name": "_modeOfTransportInProduct",
+			"type": "string"
+		},
+		{
+			"name": "_weightOfVehiclesInProduct",
+			"type": "uint32"
+		},
+		{
+			"name": "_noOfVehiclesInProduct",
+			"type": "uint32"
+		},
+		{
+			"name": "_weightOfCargoInProduct",
+			"type": "uint32"
+		}
+	],
+	"name": "input_productTrans",
+	"outputs": [],
+	"payable": false,
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "organisationName",
+	"outputs": [
+		{
+			"name": "",
+			"type": "string"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "getCarbonCredits",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+},
+{
+	"constant": false,
+	"inputs": [
+		{
+			"name": "_typeOfGasPurchased",
+			"type": "string"
+		},
+		{
+			"name": "_enterQuantityPurchasedInGases",
+			"type": "uint32"
+		}
+	],
+	"name": "input_purchasedGas",
+	"outputs": [],
+	"payable": false,
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+{
+	"constant": true,
+	"inputs": [],
+	"name": "vehicleWeight",
+	"outputs": [
+		{
+			"name": "",
+			"type": "uint32"
+		}
+	],
+	"payable": false,
+	"stateMutability": "view",
+	"type": "function"
+}
+];
+
+//Organization Name
+$('#submit1').click(function(){
+	
+
+    contract1 = new WEB3.eth.Contract(abi, address);
+
+    contract1.methods.orgName1().call().then(function(orgname){
+        $('#orgname1').html(orgname);
+    })
+})
+
+//Transportation Mode
+$('#submit2').click(function(){
+
+    contract1 = new WEB3.eth.Contract(abi, address);
+
+    contract1.methods.transportationMode1().call().then(function(transmode){
+        $('#transmode1').html(transmode);
+    })
+})
+
+//Distance Covered
+$('#submit3').click(function(){
+
+    contract1 = new WEB3.eth.Contract(abi, address);
+
+    contract1.methods.distanceCovered1().call().then(function(distancecovered){
+        $('#distancecovered1').html(distancecovered);
+    })
+})
+
+//Vehicle Weight
+$('#submit4').click(function(){
+
+    contract1 = new WEB3.eth.Contract(abi, address);
+
+    contract1.methods.vehicleWeight1().call().then(function(vehicleweight){
+        $('#vehicleweight1').html(vehicleweight);
+    })
+})
+
+//No. of Vehicles
+$('#submit5').click(function(){
+
+    contract1 = new WEB3.eth.Contract(abi, address);
+
+    contract1.methods.numberOfVehicles1().call().then(function(noofvehicles){
+        $('#noofvehicles1').html(noofvehicles);
+    })
+})
+
+//Cargo Weight
+$('#submit6').click(function(){
+
+    contract1 = new WEB3.eth.Contract(abi, address);
+
+    contract1.methods.cargoWeight1().call().then(function(cargoweight){
+        $('#cargoweight1').html(cargoweight);
+    })
+})
+})
+
+</script>
+
+
+
+
+
+<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "100%";
+  x.style.fontSize = "40px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// Accordions
+function myAccFunc(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
